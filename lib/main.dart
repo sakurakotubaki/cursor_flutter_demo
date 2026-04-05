@@ -29,7 +29,6 @@ class _HomePageState extends State<HomePage> {
   Weather _weather = Weather.sunny;
 
   void _toggleWeather() {
-    print('toggleWeather');
     setState(() {
       _weather =
           _weather == Weather.sunny ? Weather.rainy : Weather.sunny;
