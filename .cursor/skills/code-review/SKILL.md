@@ -43,6 +43,25 @@ For every changed file, check:
 
 For **generated files** (e.g. `*.g.dart`, `*.freezed.dart`): confirm they are up-to-date and not manually modified.
 
+### Project rules
+
+以下はこのプロジェクト固有のルールであり、違反は 🔴 **Critical** として報告する。
+
+#### No debug print statements
+
+`print()` および `debugPrint()` の呼び出しをコミットに含めてはならない。
+
+- デバッグ用途のログは `dart:developer` の `log()` または `logger` パッケージを使用する。
+- 差分に `print(` / `debugPrint(` が含まれている場合は必ず指摘する。
+
+#### No function components
+
+ウィジェットは必ず `StatelessWidget` または `StatefulWidget` のクラスとして定義する。`Widget` を返すトップレベル関数やメソッド抽出で UI を構築してはならない。
+
+- 関数コンポーネントは DevTools のウィジェットツリーに表示されず、デバッグが困難になる。
+- `const` コンストラクタによるリビルド最適化が効かない。
+- 差分に `Widget buildXxx(...)` や `Widget _buildXxx(...)` のようなウィジェット返却関数がある場合は、クラスウィジェットへの変換を指摘する。
+
 ## 4. Overall change set
 
 - Verify the change set is **focused and scoped** to its stated purpose — no unrelated or unnecessary changes.
