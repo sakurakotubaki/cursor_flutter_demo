@@ -1,0 +1,27 @@
+name: fvm_example
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.11.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+  lottie: ^3.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/premiumbg.png
+    # 王冠画像を assets/crown.png として置いたら、次行のコメントを外してバンドルする。
+    # - assets/crown.png
+    - assets/cake.png
+    - assets/json/running.json
+    - assets/json/pushup.json

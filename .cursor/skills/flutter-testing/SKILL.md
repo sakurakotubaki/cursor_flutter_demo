@@ -1,0 +1,46 @@
+---
+name: flutter-testing
+description: Writes and reviews Flutter/Dart tests for validity, structure, and naming. Covers unit, widget, and integration tests. Use when adding or changing tests, reviewing test quality, or when the user mentions Flutter testing, widget tests, golden tests, mocks, or test conventions.
+---
+
+# Flutter / Dart testing
+
+Defines how to write effective, meaningful Flutter and Dart tests. Adapted from [evanca/flutter-ai-rules — testing](https://github.com/evanca/flutter-ai-rules/blob/main/skills/testing/SKILL.md).
+
+---
+
+## 1. Test validity
+
+Before writing or accepting a test, ask:
+
+> **"Can this test actually fail if the real code is broken?"**
+
+- Avoid tests that only confirm mocked/fake behavior that does not reflect real logic.
+- Avoid tests that confirm behavior guaranteed by the language, the standard library, or trivially obvious code that cannot fail unless the environment is broken.
+- Every test should be capable of catching a real regression.
+
+---
+
+## 2. Structure
+
+Always use `group()` in test files — even when there is only one test. Name the group after the **class under test**:
+
+```dart
+group('Counter', () {
+  test('value should start at 0', () {
+    final counter = Counter();
+    expect(counter.value, 0);
+  });
+});
+```
+
+---
+
+## 3. Naming
+
+Name test cases using **"should"** to clearly describe the expected behavior:
+
+```dart
+test('should emit updated list when item is added', () { ... });
+test('should throw ArgumentError when input is negative', () { ... });
+```
